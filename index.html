@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Quest: Petualangan Kata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="logo-container">
+                <h1 class="game-title">WORD QUEST</h1>
+                <p class="subtitle">Petualangan Sang Penjelajah Kata</p>
+            </div>
+            <button id="btn-start" class="btn-primary">Mulai Petualangan 🚀</button>
+        </div>
+
+        <!-- Level Select Screen -->
+        <div id="level-select" class="screen hidden">
+            <h2>Pilih Misi</h2>
+            <div id="levels-container" class="levels-grid">
+                <!-- Level cards will be injected here -->
+            </div>
+            <button id="btn-back-home" class="btn-secondary">Kembali</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <div class="hud-top">
+                <button id="btn-exit-level" class="btn-icon layer-ui" aria-label="Home">🏠</button>
+                <div class="level-info layer-ui">
+                    <span id="current-level-name">Level</span>
+                </div>
+                <div class="badges layer-ui" id="badges-container">
+                    <!-- Badges earned -->
+                </div>
+            </div>
+
+            <div class="hud-stats layer-ui">
+                <div class="stat-box coins">
+                    <img src="assets/coin.png" alt="Coin" class="icon-small">
+                    <span id="coin-display">0</span>
+                </div>
+                <div class="stat-box timer" id="timer-box">
+                    ⏳ <span id="timer-display">00:00</span>
+                </div>
+                <div class="stat-box score">
+                    ⭐ <span id="score-display">0</span>
+                </div>
+            </div>
+
+            <div class="game-area">
+                <div class="combo-container hidden" id="combo-display">
+                    COMBO x2!
+                </div>
+
+                <div class="hint-container">
+                    <p id="word-hint">...</p>
+                    <button id="btn-hint" class="btn-mini">💡 Hint (20 🪙)</button>
+                </div>
+
+                <div id="drop-zone" class="drop-zone">
+                    <!-- Drop slots -->
+                </div>
+
+                <input type="text" id="hidden-input" maxlength="20" autocomplete="off" autocapitalize="characters">
+                <div id="feedback-message" class="feedback hidden">Hebat!</div>
+            </div>
+
+            <div class="controls">
+                <button id="btn-reset" class="btn-secondary">Reset ↺</button>
+                <button id="btn-check" class="btn-primary">Cek Kata ✅</button>
+                <button id="btn-music" class="btn-icon">🔊</button>
+            </div>
+        </div>
+
+        <!-- Level Complete Screen -->
+        <div id="victory-screen" class="screen hidden">
+            <div class="victory-card">
+                <h2>Misi Selesai! 🎉</h2>
+                <div class="victory-stats">
+                    <p>Skor Akhir: <span id="final-score">0</span></p>
+                    <p>Koin Didapat: <span id="final-coins">0</span> 🪙</p>
+                    <p>Rating: <span id="final-stars">⭐⭐⭐</span></p>
+                </div>
+                <div class="action-buttons">
+                    <button id="btn-menu" class="btn-secondary">Menu Utama</button>
+                    <button id="btn-next-level" class="btn-primary">Lanjut Misi ▶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Global Data first since we are not using modules due to file:// restrictions -->
+    <script src="words.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
